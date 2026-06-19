@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+  background: black;
+}
+
+#inicio {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #ff69b4;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+#galaxia {
+  background: radial-gradient(circle at center, #1a0033, #000);
+  min-height: 100vh;
+  padding: 50px;
+}
