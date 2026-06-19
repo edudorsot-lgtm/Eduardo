@@ -15,16 +15,13 @@
     <p class="entrar" onclick="mostrarGalaxia()">Entrar a nuestro universo 🌌</p>
   </div>
 
-  <!-- Pantalla galaxia -->
-  <div id="galaxia" style="display:none;">
-    <div class="estrellas"></div>
-    <h2 class="titulo">Nuestro universo 💫</h2>
-    <p class="frase">Aquí estarán tus frases, fotos y canciones</p>
-    <audio autoplay loop>
-      <source src="tuCancion.mp3" type="audio/mpeg">
-    </audio>
-    <img src="foto1.jpg" alt="Recuerdo especial">
-  </div>
+<!-- Pantalla galaxia -->
+<div id="galaxia" style="display:none;">
+  <canvas id="galaxyCanvas"></canvas>
+  <h2 class="titulo">Nuestro universo 💫</h2>
+  <p class="frase">Aquí estarán tus frases, fotos y canciones</p>
+</div>
+
 
   <script src="script.js"></script>
 </body>
