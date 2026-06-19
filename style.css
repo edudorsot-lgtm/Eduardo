@@ -6,7 +6,7 @@ body {
   text-align: center;
 }
 
-/* Pantalla de inicio con fondo estrellado */
+/* Pantalla de inicio */
 #inicio {
   height: 100vh;
   display: flex;
@@ -16,7 +16,7 @@ body {
   background: black url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
 }
 
-/* Título con fuente romántica */
+/* Título romántico */
 .titulo {
   font-family: 'Great Vibes', cursive;
   font-size: 3em;
@@ -24,7 +24,7 @@ body {
   animation: brillar 3s infinite alternate;
 }
 
-/* Frase romántica con fuente moderna */
+/* Frase */
 .frase {
   font-family: 'Poppins', sans-serif;
   font-size: 1.5em;
@@ -50,7 +50,7 @@ body {
 #galaxia {
   position: relative;
   min-height: 100vh;
-  background: radial-gradient(circle at center, #1a0033, #000);
+  background: black;
   overflow: hidden;
   padding: 50px;
 }
