@@ -3,3 +3,4 @@ function mostrarGalaxia() {
   document.getElementById("galaxia").style.display = "block";
 }
 
+
