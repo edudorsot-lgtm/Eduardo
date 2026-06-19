@@ -1,32 +1,82 @@
+/* Fuente general */
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
+  margin: 0;
   color: white;
   text-align: center;
-  background: black;
 }
 
+/* Pantalla de inicio con fondo estrellado */
 #inicio {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: black url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
 }
 
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #ff69b4;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 1.2em;
+/* Título con fuente romántica */
+.titulo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  margin-bottom: 20px;
+  animation: brillar 3s infinite alternate;
+}
+
+/* Frase romántica con fuente moderna */
+.frase {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 40px;
+  animation: latido 2s infinite alternate;
+}
+
+/* Texto que funciona como botón */
+.entrar {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3em;
+  color: #ff69b4;
   cursor: pointer;
+  transition: transform 0.3s, text-shadow 0.3s;
 }
 
+.entrar:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 15px #ff69b4;
+}
+
+/* Pantalla galaxia */
 #galaxia {
-  background: radial-gradient(circle at center, #1a0033, #000);
+  position: relative;
   min-height: 100vh;
+  background: radial-gradient(circle at center, #1a0033, #000);
+  overflow: hidden;
   padding: 50px;
 }
+
+/* Estrellas animadas */
+.estrellas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: moverEstrellas 60s linear infinite;
+}
+
+@keyframes moverEstrellas {
+  from { background-position: 0 0; }
+  to { background-position: 10000px 10000px; }
+}
+
+/* Animaciones */
+@keyframes brillar {
+  from { opacity: 0.7; text-shadow: 0 0 10px #fff; }
+  to { opacity: 1; text-shadow: 0 0 20px #ff69b4; }
+}
+
+@keyframes latido {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
