@@ -1,41 +1,55 @@
-// Mostrar la galaxia al dar clic
 function mostrarGalaxia() {
   document.getElementById("inicio").style.display = "none";
   document.getElementById("galaxia").style.display = "block";
-  dibujarGalaxia(); // Llamamos a la función que dibuja las estrellas
+  iniciarGalaxia3D();
 }
 
-// Dibujar galaxia con estrellas en espiral
-function dibujarGalaxia() {
-  const canvas = document.getElementById("galaxyCanvas");
-  const ctx = canvas.getContext("2d");
+function iniciarGalaxia3D() {
+  // Crear escena
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    2000
+  );
+  camera.position.z = 500;
 
-  // Ajustar tamaño del canvas
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById("galaxyContainer").appendChild(renderer.domElement);
 
-  const estrellas = [];
-  const numEstrellas = 500;
+  // Crear estrellas en espiral
+  const geometry = new THREE.BufferGeometry();
+  const numStars = 2000;
+  const positions = [];
 
-  // Generamos estrellas en espiral
-  for (let i = 0; i < numEstrellas; i++) {
-    const angulo = i * 0.1; // controla la curva
-    const radio = i * 0.5;  // controla la expansión
-    const x = canvas.width / 2 + radio * Math.cos(angulo);
-    const y = canvas.height / 2 + radio * Math.sin(angulo);
-    estrellas.push({ x, y, size: Math.random() * 2 });
+  for (let i = 0; i < numStars; i++) {
+    const angle = i * 0.1;
+    const radius = i * 0.3;
+    const x = radius * Math.cos(angle);
+    const y = (Math.random() - 0.5) * 200; // dispersión vertical
+    const z = radius * Math.sin(angle);
+    positions.push(x, y, z);
   }
 
-  // Dibujar todas las estrellas
-  function dibujar() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "white";
-    estrellas.forEach(e => {
-      ctx.beginPath();
-      ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
-      ctx.fill();
-    });
-  }
+  geometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(positions, 3)
+  );
+  const material = new THREE.PointsMaterial({ color: 0xffffff, size: 2 });
+  const stars = new THREE.Points(geometry, material);
+  scene.add(stars);
 
-  dibujar();
+  // Controles para mover la cámara
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+  // Animación
+  function animate() {
+    requestAnimationFrame(animate);
+    stars.rotation.y += 0.0005; // rotación lenta de la galaxia
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  animate();
 }
