@@ -42,7 +42,7 @@ function iniciarGalaxia3D() {
   scene.add(stars);
 
   // Controles para mover la cámara
-  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 
   // Animación
   function animate() {
